@@ -1,0 +1,40 @@
+Web
+- Login
+- ABM de Usuario
+	* Baja seria inactivar
+	* Cambio de contrasena
+	* Creación del Usuario y Asociar a un Recurso
+	* Recuperar Contrasena
+- Configuracion de Notificacion
+	* estado de Issues
+	* Por Proyecto
+	* Solo que esté asociada a mi usuario
+	* Solo que esté como 
+	* Criacion de Issue
+- Definicion de Graficos
+- ABM Cliente
+- ABM de Proyecto
+	* Baja seria Inactivar
+	* Campos:
+		* Tipo de Herramienta (Jira, Redmine...)
+		* URL de la Herramienta (www.jira.com/Calypso)
+		* Nombre del proyecto en la herramienta
+- Links utiles del proyecto
+- Conocer el Equipo
+	* Usuarios Associados a este proyecto
+- Asociación/Desacioar Usuario al Proyecto y sus permisos
+- Integración con sistemas de llamados (Jira, Redmine, etc)
+	* Listar Issues
+	* Area de Productividad 
+- Alta de Atributos para artefactos. 
+- ABM de Artefactos
+- Generación/Visualizacion de los  Artefactos de acuerdo con sus templates
+
+
+App
+- Login
+- Recuperar Contrasena
+- Notificaciones 
+- Visualización de Graficos
+- Conocer el Equipo
+	* Usuarios Associados a este proyecto
