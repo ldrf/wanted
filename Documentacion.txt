@@ -28,7 +28,7 @@ Web
 	* Area de Productividad 
 - Alta de Atributos para artefactos. 
 - ABM de Artefactos
-- Generación/Visualizacion de los  Artefactos de acuerdo con sus templates
+- Generación/Visualizacion de los  Artefactos de acuerdo con sus template
 
 
 App
