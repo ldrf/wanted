@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from './styles'
-import {View,TextInput,Image,TouchableOpacity,Text} from 'react-native'
+import {View,TextInput,Image,TouchableOpacity,Text,Modal,Alert,TouchableHighlight} from 'react-native'
 import logoImg from '../../assets/logo.png'
 import {useNavigation} from '@react-navigation/native'
 import api from '../../services/api'
@@ -9,6 +9,7 @@ function Login(){
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [errorModalVisible, setErrorModalVisible]=useState(false)
     
     const navigation = useNavigation();
     
@@ -27,7 +28,7 @@ function Login(){
         if(name){
             navigation.push('Home', {data})
         }else{
-            alert("Failed authentication.")            
+            setErrorModalVisible(true)
         }       
         
     }        
@@ -35,7 +36,7 @@ function Login(){
     return(
         <View style={styles.container}>
             
-            <Image source={logoImg} style={styles.logo} />
+            <Image style={styles.logo} source={logoImg}/>
             <View style={styles.inputView} >
                 <TextInput  
                     value={email}
@@ -64,6 +65,17 @@ function Login(){
             <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
                 <Text style={styles.loginText}>LOGIN</Text>
             </TouchableOpacity>
+            
+            <Modal animationType="slide" transparent={true} visible={errorModalVisible}>
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Text style={styles.forgot}>Failed authentication</Text>
+                        <TouchableOpacity style={{marginTop:10}} onPress={() => {setErrorModalVisible(false) }}>
+                            <Text style={{...styles.forgot,fontWeight:"bold"}}>OK</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </View>                 
 
     );

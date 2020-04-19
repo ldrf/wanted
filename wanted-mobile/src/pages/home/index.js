@@ -7,15 +7,11 @@ import api from '../../services/api'
 function Home(){
     const route = useRoute(); 
     const {name,projectList} = route.params.data;
-
-    const navigation = useNavigation();
-    function navigateBack(){
-        return navigation.goBack();
-    }
    
     const [selectedValue, setSelectedValue]=useState("");
     const [customer,setCustomer]=useState("")
     const [users, setUsers]=useState([])
+    
 
     async function handleLoad(itemValue){
         setSelectedValue(itemValue)
@@ -30,6 +26,11 @@ function Home(){
             setCustomer(response.data.customer)
         })
     },[])
+
+    const navigation = useNavigation();
+    function navigateBack(){
+        return navigation.goBack();
+    }
 
     return(
         <View style={styles.container}>
@@ -51,7 +52,7 @@ function Home(){
                             
            <TouchableOpacity onPress={navigateBack} style={styles.bottomView}>
                <Text style={{color:"#FFFFFF"}}>Exit</Text>
-           </TouchableOpacity>
+           </TouchableOpacity>           
         </View>                 
     );
 }
