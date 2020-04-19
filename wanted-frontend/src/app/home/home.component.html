@@ -1,10 +1,19 @@
-﻿<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Wanted</p>
-<h3>All registered users:</h3>
-<ul>
-    <li *ngFor="let user of users">
-        {{user.username}} ({{user.firstName}} {{user.lastName}})
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>
-<p><a [routerLink]="['/login']">Logout</a></p>
+<div [hidden]="isLogin">
+  <app-login [homeComponent]="this"> </app-login>
+</div>
+
+<div [hidden]="isNotLogin" class="wrapper">
+<!-- <div class="wrapper">   -->
+  <app-navbar> </app-navbar>
+    <div class="sidebar" data-color='green' data-image="">
+        <div class="sidebar-background"></div>
+
+        <app-sidebar></app-sidebar>
+
+    </div>
+    <div class="main-panel">
+
+        <router-outlet> </router-outlet>
+
+    </div>
+</div>

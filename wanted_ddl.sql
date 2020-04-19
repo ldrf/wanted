@@ -1,7 +1,7 @@
 CREATE TABLE users (
      id INT NOT NULL AUTO_INCREMENT,
 	 name VARCHAR(200) NOT NULL,
-     mail VARCHAR(200) not null,
+     mail VARCHAR(200) not null unique,
      password VARCHAR(200) not null,
      active boolean not null,
      PRIMARY KEY (id)
@@ -21,6 +21,17 @@ CREATE TABLE projects (
      PRIMARY KEY (id)
 );
 
+CREATE TABLE tools (
+     id INT NOT NULL AUTO_INCREMENT,
+	 project_id INT NOT NULL,
+     type VARCHAR(200) NOT NULL,
+     project_name VARCHAR(200) NOT NULL,
+     url VARCHAR(200) NOT NULL,
+     token VARCHAR(200) NOT NULL,
+     PRIMARY KEY (id)
+);
+
+
 CREATE TABLE user_project (
      user_id INT ,
 	 project_id INT ,
@@ -33,22 +44,22 @@ insert into users (name, mail, password, active) values ('Lukita', 'lukita@cpqi.
 insert into users (name, mail, password, active) values ('Charlie', 'charlie@cpqi.com', '9999', true);
 commit;
 
+select * from users;
+
 insert into projects (name, customer_id) values ('BGBA-FASE3', 1);
 insert into projects (name, customer_id) values ('BGBA-RTB', 1);
-
+insert into projects (name, customer_id) values ('BGBA-Services', 1);
+insert into projects (name, customer_id) values ('BGBA-FASE2', 1);
 commit;
 
 insert into customers (name) values ('Galicia');
 
-
-
-
 insert into user_project (user_id,project_id, username_tool) values (1, 1, 'Frank');
 insert into user_project (user_id,project_id, username_tool) values (1, 2, 'Frank');
+insert into user_project (user_id,project_id, username_tool) values (1, 3, 'Frank');
+insert into user_project (user_id,project_id, username_tool) values (1, 4, 'Frank');
 insert into user_project (user_id,project_id, username_tool) values (2, 1, 'Presunto');
 insert into user_project (user_id,project_id, username_tool) values (2, 2, 'Presunto');
 insert into user_project (user_id,project_id, username_tool) values (3, 2, 'Charlie');
 insert into user_project (user_id,project_id, username_tool) values (4, 1, 'Lukita');
 commit;
-
-

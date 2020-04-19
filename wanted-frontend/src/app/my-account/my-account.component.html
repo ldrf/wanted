@@ -1,0 +1,65 @@
+
+
+<div class="main-content">
+
+  <error-displayer [errorMessage]="errorMessage"></error-displayer>
+
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header" data-background-color="green">
+                      <h4 class="title">{{'myAccount.title' | translate}}</h4>
+                      <p class="category">{{'myAccount.subTitle' | translate}}</p>
+                  </div>
+                  <div class="card-content">
+                      <form #templateForm="ngForm">
+                          <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty">
+                                    <label class="control-label">Email</label>
+                                    <input type="email" [(ngModel)]="entity.email" class="form-control" name="email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty">
+                                    <label class="control-label">{{'myAccount.firstName' | translate}}</label>
+                                    <input type="text" [(ngModel)]="entity.name" class="form-control" name="fist Name" required>
+                                </div>
+                            </div>
+
+                          </div>
+
+                          <div class="row">
+
+                              <div class="col-md-6">
+                                  <div class="form-group form-black label-floating is-empty">
+                                      <label class="control-label">{{'myAccount.lastName' | translate}}</label>
+                                      <input type="text" [(ngModel)]="entity.lastName" class="form-control" name="lastName" required>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <label>About Me</label>
+                                      <div class="form-group form-black label-floating is-empty">
+                                          <label class="control-label"> {{'myAccount.description' | translate}}</label>
+                                          <textarea class="form-control" [(ngModel)]="entity.description" rows="5" name="description"></textarea>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                          <button *ngIf="entity?.isRegister" (click)="updateAccount($event)" [disabled]="templateForm?.invalid" class="btn btn-success pull-right">{{'myAccount.updateAccount' | translate}}</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>

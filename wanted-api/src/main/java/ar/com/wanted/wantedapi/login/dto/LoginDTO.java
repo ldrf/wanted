@@ -3,6 +3,8 @@ package ar.com.wanted.wantedapi.login.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ar.com.wanted.wantedapi.model.User;
 
 
@@ -10,6 +12,7 @@ public class LoginDTO {
 	
 	private String mail;
 	private String name;
+	@JsonIgnore
 	private String password;
 	private List<String> projectList = new ArrayList<>();
 	public LoginDTO(User user) {
