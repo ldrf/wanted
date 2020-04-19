@@ -18,4 +18,11 @@ public class UsersService {
 		return customerData;
 	}
 
+	public void passwordRecovery(String mail) {
+
+		
+		// TODO Auto-generated method stub
+		
+	}
+
 }
