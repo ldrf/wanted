@@ -3,15 +3,11 @@ export default StyleSheet.create({
     
     container: {
         flex: 1,
-        backgroundColor: '#e6d7ed',
+        backgroundColor: '#f8f8f8',
         alignItems: 'center',
         justifyContent: 'center',
       },
-
       logo:{
-        fontWeight:"bold",
-        fontSize:50,
-        color:"#fb5b5a",
         marginBottom:40
       },
       inputView:{
@@ -27,8 +23,7 @@ export default StyleSheet.create({
         height:50,
         color:"white"
       },
-      loginText:{
-        
+      loginText:{        
         fontWeight:"bold",
         alignItems: 'center',
         justifyContent: 'center',
@@ -37,7 +32,7 @@ export default StyleSheet.create({
       },
       loginBtn:{
         width:"80%",
-        backgroundColor:"#FFFFFF",
+        backgroundColor:"#E6DFFE",
         borderRadius:25,
         height:50,
         alignItems:"center",
@@ -47,7 +42,28 @@ export default StyleSheet.create({
       },
       forgot:{
         color:"#8d59a5",
-        fontSize:11
-      }
+        fontSize:12
+      },
+      centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+      },
+      modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5
+      },     
 
 })
