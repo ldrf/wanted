@@ -3,11 +3,10 @@ export default StyleSheet.create({
     
     container: {
         flex: 1,
-        backgroundColor: '#e6d7ed',
+        backgroundColor: '#f8f8f8',
         alignItems: 'center',
         justifyContent: 'center',
       },
-
       logo:{
         fontWeight:"bold",
         fontSize:50,
@@ -27,8 +26,7 @@ export default StyleSheet.create({
         height:50,
         color:"white"
       },
-      loginText:{
-        
+      loginText:{        
         fontWeight:"bold",
         alignItems: 'center',
         justifyContent: 'center',
@@ -37,7 +35,7 @@ export default StyleSheet.create({
       },
       loginBtn:{
         width:"80%",
-        backgroundColor:"#FFFFFF",
+        backgroundColor:"#E6DFFE",
         borderRadius:25,
         height:50,
         alignItems:"center",
@@ -47,7 +45,7 @@ export default StyleSheet.create({
       },
       forgot:{
         color:"#8d59a5",
-        fontSize:11
+        fontSize:12
       }
 
 })

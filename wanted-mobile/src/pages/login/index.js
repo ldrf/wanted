@@ -1,22 +1,35 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import styles from './styles'
 import {View,TextInput,Image,TouchableOpacity,Text} from 'react-native'
 import logoImg from '../../assets/logo.png'
+import {useNavigation} from '@react-navigation/native'
+import api from '../../services/api'
 
 function Login(){  
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    
+    const navigation = useNavigation();
+    
+    async function handleLogin(){
 
-    useEffect(()=>{
-
-    },[])
-
-    function handleLogin(){
-        alert("Logged!")
+        const response = await api.get('login/validate-mail-password?mail='+email+'&password='+password);
+        const{name,projectList} = response.data
         setEmail("")
         setPassword("")
 
+        const data = {            
+            name,
+            projectList
+        }
+        
+        if(name){
+            navigation.push('Home', {data})
+        }else{
+            alert("Failed authentication.")            
+        }       
+        
     }        
 
     return(
