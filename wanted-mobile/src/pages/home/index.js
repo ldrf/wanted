@@ -34,6 +34,10 @@ function Home(){
         return navigation.goBack();
     }
 
+    function navigateDatails(){
+        navigation.push('Chart')
+    }
+
     return(        
         <View style={styles.container}>                          
             <Text style={styles.topLeftView}><FontAwesome name="user" size={16}/> {name}</Text>    
@@ -63,7 +67,11 @@ function Home(){
                         
                     </View>                                   
                 ))} 
-            </View>          
+            </View>     
+            <TouchableOpacity onPress={navigateDatails} style={styles.detailsBtn}>
+                <Text style={{color:"#FFFFFF"}}>Show project details <MaterialIcons name="format-list-numbered"/></Text>
+            </TouchableOpacity>
+
             <TouchableOpacity onPress={navigateBack} style={styles.bottomView}>
                 <Text style={{color:"#FFFFFF"}}><MaterialIcons name="arrow-back"/>Exit</Text>
             </TouchableOpacity>
