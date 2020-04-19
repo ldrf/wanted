@@ -1,0 +1,12 @@
+.nav-tabs {
+    background: #46b027;
+    border: 0;
+    border-radius: 3px;
+    padding: 0 15px;
+}
+.nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+    background-color: transparent;
+    border: 0 !important;
+    color: #f5f5f5 !important;
+    font-weight: 550;
+}

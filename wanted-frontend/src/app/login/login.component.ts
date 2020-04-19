@@ -1,58 +1,93 @@
-﻿import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 
-import { AlertService, AuthenticationService } from '../_services';
+import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
+import { HomeComponent } from '../home/home.component';
+import { AuthService } from "angular4-social-login";
+import { SocialUser } from "angular4-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
+import { UserResourceApiService } from '../shared/services/user-resource-api.service';
+import { LocalStorageService } from 'ngx-webstorage';
+import { TranslateService } from '@ngx-translate/core';
 
-@Component({templateUrl: 'login.component.html'})
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html'
+})
 export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
-    loading = false;
-    submitted = false;
-    returnUrl: string;
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
-        private authenticationService: AuthenticationService,
-        private alertService: AlertService) {}
+  title = 'Carpnd';
+  img = 'assets/public/img/carpnd2.jpg';
+  myAppComponent : any
+  userCurrent:any = {};
+  entity:any = {};
+  user: SocialUser;
+  private loggedIn: boolean;
+  @Input('homeComponent') homeComponent: HomeComponent;
 
-    ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
+  constructor( private router: Router, private authService: AuthService,
+    protected userResourceApiService:UserResourceApiService, protected localStorageService:LocalStorageService) { }
 
-        // reset login status
-        this.authenticationService.logout();
+  ngOnInit() {
 
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.localStorageService.store('userSocial', this.user);
+      this.loggedIn = (user != null);
+      // this.loadUser();
+      this.redirectToHome();
+    });
+
+    var body = document.getElementsByTagName('body')[0];
+    body.style.backgroundImage = 'url(assets/public/img/carpnd2.jpg)';
+
+  }
+
+  loadUser(user:SocialUser){
+
+  }
+
+  loadUserForSocialNetwork(){
+
+    this.entity.idGoogle = this.user + "-" + this.user.id;
+    this.entity.idFacebook = this.user + "-" + this.user.id;
+
+    this.userResourceApiService.getUserForSocialNetwork(this.entity).subscribe(result => {
+      console.log(result);
+      this.userCurrent = result;
+      this.localStorageService.store('userCurrent', this.user);
+
+    });
+  }
+
+  redirectToHome(){
+    if(this.loggedIn){
+      var body = document.getElementsByTagName('body')[0];
+      body.style.backgroundImage = 'url(/)';
+      this.homeComponent = this.homeComponent;
+
+      if(this.homeComponent != undefined){
+        this.homeComponent.isNotLogin = false;
+        this.homeComponent.isLogin = true;
+      }
+      this.loadUserForSocialNetwork();
+      this.router.navigate(['/home']);
     }
+  }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(result =>{
+      console.log(result);
+    });
+  }
 
-    onSubmit() {
-        this.submitted = true;
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
 
-        // stop here if form is invalid
-        if (this.loginForm.invalid) {
-            return;
-        }
+  signOut(): void {
+    this.authService.signOut();
+  }
 
-        this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
-    }
 }

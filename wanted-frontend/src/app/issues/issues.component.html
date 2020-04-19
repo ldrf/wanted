@@ -1,0 +1,84 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+
+                  <div class="card-header" data-background-color="green">
+                      <h4 class="title">Search Issues</h4>
+                  </div>
+                  <form class="form-inline">
+                  <div class="col-md-12">
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-xs-12 col-12 col-md-4 form-group">
+                          <label class="control-label">from Date :</label>
+                          <div class="form-group form-black label-floating is-empty">
+                            <input type="text" class="form-control" name="fromDate" [(ngModel)]="filter.fromDate" #dp="bsDatepicker" bsDatepicker>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-xs-12 col-12 col-md-4 form-group">
+                          <label class="control-label">to Date :</label>
+                          <div class="form-group form-black label-floating is-empty">
+                              <input type="text" name="toDate" [(ngModel)]="filter.toDate" class="form-control" #dp="bsDatepicker" bsDatepicker >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" (click)="search()" class="btn btn-success pull-right">Search</button>
+                    <div class="clearfix"></div>
+                  </div>
+                  </form>
+
+                </div>
+
+                <div [hidden]="issues?.length != 0" class="noresults2">
+                  <img src="assets/public/img/search-sad.png">
+                  <!-- <div class="nores_2line">No encontramos ningún resultado.</div>
+                  <div class="nores_3line">Intenta nuevamente cambiando algún filtro.</div> -->
+                  <div class="nores_2line">We did not find any result...</div>
+                  <div class="nores_3line">Try again changing a filter.</div>
+                </div>
+
+                <div *ngIf="issues?.length > 0" class="card">
+
+                    <div class="card-header" data-background-color="green">
+                        <h4 class="title">Result</h4>
+                        <p class="category">You operations closed</p>
+                    </div>
+                    <div class="card-content table-responsive">
+                      <table class="table">
+                          <thead class="text-success">
+                              <tr>
+                                  <th>#ID</th>
+                                  <th>title</th>
+                                  <th>assigned</th>
+                                  <th>date</th>
+                                  <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let  issue of issues; let i = index">
+                                  <td>{{ issue.id}}</td>
+                                  <td>{{ issue.title}}</td>
+                                  <td>{{ issue.assigned}}</td>
+                                  <td>{{ issue.date}}</td>
+                                  <td>
+                                    <span>
+                                      <a (click)="showProject(project)"><i class="material-icons">local_grocery_store</i></a>
+                                    </span>
+                                  </td>
+                              </tr>
+                            </tbody>
+                      </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
