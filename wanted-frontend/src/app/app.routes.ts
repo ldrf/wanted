@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NotificationRoutes } from './notifications/notification.route';
 import { IssuesRoutes } from './issues/issues.route';
+import { RegisterRoutes } from './register/register.route';
 
 
 export const routes: Routes = [
@@ -20,6 +21,7 @@ export const routes: Routes = [
   ...MyAccountRoutes,
   ...ProjectRoutes,
   ...NotificationRoutes,
-  ...IssuesRoutes
+  ...IssuesRoutes,
+  ...RegisterRoutes
 
 ];

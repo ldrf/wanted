@@ -15,6 +15,7 @@ import { DataTableModule } from "angular2-datatable";
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterModule } from './register/register.module';
 import { HomeComponent } from './home/home.component';
 import { NotificationModule } from './notifications/notification.module';
 import { HomeModule } from './home/home.module';
@@ -56,7 +57,7 @@ import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-logi
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(routes), NgbModule.forRoot(), DatepickerModule.forRoot(), BsDatepickerModule.forRoot(), HttpModule, ServiceModule, SharedModule, Ng2Webstorage, DataTableModule,
-    HomeModule, DashboardModule, ComponentsModule, MyAccountModule, ProjectsModule, NotificationModule, IssuesModule
+    HomeModule, DashboardModule, ComponentsModule, MyAccountModule, ProjectsModule, NotificationModule, IssuesModule, RegisterModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
