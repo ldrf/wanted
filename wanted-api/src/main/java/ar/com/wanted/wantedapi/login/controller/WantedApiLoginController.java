@@ -1,19 +1,23 @@
-package ar.com.wanted.wantedapi.users.controller;
+package ar.com.wanted.wantedapi.login.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.com.wanted.wantedapi.users.dto.UserLoginDTO;
+import ar.com.wanted.wantedapi.login.dto.LoginDTO;
+import ar.com.wanted.wantedapi.login.service.LoginService;
 
 @RestController
-public class WantedApiUsersController {
+public class WantedApiLoginController {
 
-	@RequestMapping(value = "/users/validate-mail-password", method = RequestMethod.GET)
-	public UserLoginDTO listIssuesByProject(@RequestParam(name = "mail") String mail,
+	@Autowired
+	private LoginService service;
+	
+	@RequestMapping(value = "/login/validate-mail-password", method = RequestMethod.GET)
+	public LoginDTO listIssuesByProject(@RequestParam(name = "mail") String mail,
 			@RequestParam(name = "password") String password) throws Exception {
-		UserLoginDTO userLoginDTO = null;
 		if (mail == null || "".contentEquals(mail.trim())) {
 			throw new Exception("Mail is mandatory.");
 		}
@@ -21,13 +25,8 @@ public class WantedApiUsersController {
 			throw new Exception("Password is mandatory.");
 		}
 
-		if ("admin@cpqi.com".equals(mail) && "1234".equals(password)) {
-			userLoginDTO = new UserLoginDTO();
-			userLoginDTO.setMail("admin@cpqi.com");
-			userLoginDTO.setPassword("1234");
-		}
+		LoginDTO userLoginDTO = service.findUserByMailPassword(mail, password);
 		
-
 		return userLoginDTO;
 
 	}
