@@ -1,0 +1,107 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans:400,700');
+// html, body {
+//   margin: 0px;
+//   padding: 0px;
+// }
+// body{
+//   background-color: #f0f0f0;
+//   font-family: Roboto, 'Helvetice New', 'Arial', sans-serif
+// }
+// .full-background {
+//     position: fixed;
+//     background-image: url("assets/public/img/carpnd2.jpg");
+//     background-size: cover;
+//     height: 100%;
+//     width: 100%;
+//     top: 0;
+// }
+
+
+.content{
+  margin: unset !important;
+  padding: unset !important;
+}
+
+.navbar{
+  padding: unset !important;
+  margin-bottom: unset !important;
+}
+.navbar.navbar-transparent.navbar-absolute{
+  padding-top: unset !important;
+  z-index: 90 !important;
+  background-color: #4caf50;
+  position: fixed;
+  width: 100%;
+}
+.sidebar{
+  z-index: 99 !important;
+  //position: absolute !important;
+}
+
+
+.noresults {
+  text-align: center;
+  padding: 30px;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--accent-color);
+}
+
+.noresults2 {
+  text-align: center;
+  padding: 74px 0;
+}
+
+.noresults2 img {
+  width: 110px;
+  height: 110px;
+  margin-bottom: 12px;
+}
+
+.nores_1line {
+  font-size: 30px;
+  font-weight: 600;
+  display: none;
+}
+
+.nores_2line {
+  font-size: 22px;
+}
+
+.nores_3line {
+  font-size: 16px;
+  font-weight: 300;
+  opacity: 0.7;
+}
+
+//
+
+
+html, body{
+  height: 90%;
+}
+body {
+
+  font-family: Roboto, 'Helvetice New', 'Arial', sans-serif;
+  background-image: url("assets/public/img/cpqi-background.jpg");
+  background-position: center center;
+	background-repeat:  no-repeat;
+	background-attachment: fixed;
+	background-size:  cover;
+	background-color: #999;
+
+}
+
+// .wrapper {
+//   height: 100%;
+//   width: 100%;
+// }
+.content {
+  position: relative;
+  z-index: 1;
+  margin: 20px;
+  background-color: rgba(255,255,255,.85);
+  padding: 20px;
+}
