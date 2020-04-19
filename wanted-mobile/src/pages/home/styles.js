@@ -53,7 +53,20 @@ export default StyleSheet.create({
       mid:{        
         left:20,
         top: '40%'
-      }
+      },
+      detailsBtn: {
+        flex: 1,
+        width:"50%",
+        borderRadius:25,
+        backgroundColor:"#8d59a5",
+        height:50,
+        alignItems:"center",
+        justifyContent: 'center',        
+        position: 'absolute', 
+        bottom: 150,
+        fontWeight:"bold",
+              
+      },
      
       
 
