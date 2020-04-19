@@ -16,8 +16,8 @@ public class LoginDTO {
 		this.mail = user.getMail();
 		this.name = user.getName();
 		this.password = user.getPassword();
-		if(user.getProjects() != null) {
-			user.getProjects().forEach(project -> projectList.add(project.getName()));
+		if(user.getUserProjects() != null) {
+			user.getUserProjects().forEach(userProjects -> projectList.add(userProjects.getProject().getName()));
 		}
 	}
 	

@@ -1,18 +1,13 @@
 package ar.com.wanted.wantedapi.model;
 
-import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,21 +31,14 @@ public class User {
 	private boolean active;
 	
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_project",
-            joinColumns = {
-                    @JoinColumn(name = "user_id", referencedColumnName = "id",
-                            nullable = false, updatable = false)},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "project_id", referencedColumnName = "id",
-                            nullable = false, updatable = false)})
-    private Set<Project> projects = new HashSet<>();
+	@OneToMany(mappedBy = "user")
+    private Set<UserProject> userProjects;
 	
-	public Set<Project> getProjects() {
-		return projects;
+	public Set<UserProject> getUserProjects() {
+		return userProjects;
 	}
-	public void setProjects(Set<Project> projects) {
-		this.projects = projects;
+	public void setUserProjects(Set<UserProject> userProjects) {
+		this.userProjects = userProjects;
 	}
 	public long getId() {
 		return id;

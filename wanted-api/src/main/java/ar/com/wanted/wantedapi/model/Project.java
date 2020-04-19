@@ -1,10 +1,17 @@
 package ar.com.wanted.wantedapi.model;
 
+
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +25,14 @@ public class Project {
 	
 	@Column(name = "NAME")
 	private String name;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="customer_id")
+	private Customer customer;
+	
+	@OneToMany(mappedBy = "project")
+    private Set<UserProject> userProjects;
+	
 	public long getId() {
 		return id;
 	}
@@ -29,6 +44,18 @@ public class Project {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	public Set<UserProject> getUserProjects() {
+		return userProjects;
+	}
+	public void setUserProjects(Set<UserProject> userProjects) {
+		this.userProjects = userProjects;
 	}
 	
 	
