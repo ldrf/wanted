@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import styles from './styles'
-import {View,TextInput,Image,TouchableOpacity,Text,Modal,Alert,TouchableHighlight} from 'react-native'
+import {View,TextInput,Image,TouchableOpacity,Text,Modal} from 'react-native'
 import logoImg from '../../assets/logo.png'
+import {FontAwesome} from '@expo/vector-icons'
 import {useNavigation} from '@react-navigation/native'
 import api from '../../services/api'
 
@@ -37,12 +38,12 @@ function Login(){
         <View style={styles.container}>
             
             <Image style={styles.logo} source={logoImg}/>
-            <View style={styles.inputView} >
+            <View style={styles.inputView} >                
                 <TextInput  
                     value={email}
                     clearButtonMode="always"
                     style={styles.inputText}
-                    placeholder="Email" 
+                    placeholder="Mail" 
                     placeholderTextColor="#FFFFFF"
                     onChangeText={text => setEmail(text)}/>
             
@@ -52,7 +53,7 @@ function Login(){
                     value={password}
                     clearButtonMode="always"
                     style={styles.inputText}
-                    placeholder="Passowrd" 
+                    placeholder="Password" 
                     placeholderTextColor="#FFFFFF"
                     secureTextEntry 
                     onChangeText={text => setPassword(text)}/>                  
@@ -63,7 +64,7 @@ function Login(){
             </TouchableOpacity> 
 
             <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
-                <Text style={styles.loginText}>LOGIN</Text>
+                <Text style={styles.loginText}>LOGIN <FontAwesome name="unlock-alt"/></Text>
             </TouchableOpacity>
             
             <Modal animationType="slide" transparent={true} visible={errorModalVisible}>
