@@ -34,7 +34,7 @@
     "angular2-jwt": "^0.2.3",
     "angular4-social-login": "^1.1.1",
     "arrive": "2.4.1",
-    "auth0-js": "^9.6.1",
+    "auth0-js": "^9.13.2",
     "bootstrap": "3.3.7",
     "bootstrap-material-design": "0.5.10",
     "bootstrap-notify": "3.1.3",
